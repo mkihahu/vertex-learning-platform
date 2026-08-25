@@ -1,3 +1,4 @@
+import { SignInButton, SignUpButton, Show, UserButton } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/ui/navigation";
 
@@ -50,13 +51,27 @@ export default function Home() {
               >
                 <BellIcon />
               </button>
-              <img
-                src="https://i.pravatar.cc/100?img=5"
-                alt=""
-                width={32}
-                height={32}
-                className="h-8 w-8 rounded-full object-cover ring-1 ring-black/5"
-              />
+              <Show when="signed-out">
+                <SignInButton mode="modal">
+                  <button className="hidden h-8 rounded-full px-4 text-[13px] font-medium text-neutral-700 hover:bg-neutral-50 md:inline-flex md:items-center">
+                    Sign in
+                  </button>
+                </SignInButton>
+                <SignUpButton mode="modal">
+                  <button className="inline-flex h-8 items-center justify-center rounded-full bg-[#E86A2C] px-4 text-[13px] font-medium text-white shadow-sm hover:bg-[#D65F24]">
+                    Sign up
+                  </button>
+                </SignUpButton>
+              </Show>
+              <Show when="signed-in">
+                <UserButton
+                  appearance={{
+                    elements: {
+                      avatarBox: "h-8 w-8",
+                    },
+                  }}
+                />
+              </Show>
             </div>
           </header>
 

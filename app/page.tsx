@@ -1,339 +1,335 @@
-import { Badge } from "@/components/ui/badge";
-import { Button, ExternalIcon, PlayCircleIcon } from "@/components/ui/button";
-import {
-  CourseCard,
-  LessonCard,
-  LessonVideoCard,
-  ResourceCard,
-} from "@/components/ui/card";
-import { SearchInput, Select } from "@/components/ui/input";
-import { Breadcrumbs, Logo, Pagination } from "@/components/ui/navigation";
-import { Progress } from "@/components/ui/progress";
-import { Status } from "@/components/ui/status";
+import { Button } from "@/components/ui/button";
+import { Logo } from "@/components/ui/navigation";
+
+// Home page — matches design/vertex-home.png
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#FAFAFC]">
-      {/* Header */}
-      <header className="sticky top-0 z-10 flex h-14 items-center justify-between border-b border-neutral-200 bg-white px-6">
-        <div className="flex items-center gap-8">
-          <Logo />
-          <nav className="hidden items-center gap-6 text-sm font-medium md:flex">
-            <a href="#" className="text-primary-500">
-              Courses
-            </a>
-            <a href="#" className="text-neutral-500 hover:text-neutral-900">
-              My Learning
-            </a>
-          </nav>
-        </div>
-        <div className="h-8 w-8 rounded-full bg-neutral-100" />
-      </header>
+    <div className="min-h-screen bg-[#FFFBF7] text-neutral-900">
+      {/* outer striped side borders */}
+      <div className="relative mx-auto min-h-screen max-w-[1440px] bg-[#FFFBF7]">
+        {/* left stripe */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-y-0 left-0 hidden w-[28px] xl:block"
+          style={{
+            background:
+              "repeating-linear-gradient(135deg, #FFEDE3 0 1px, transparent 1px 10px)",
+          }}
+        />
+        {/* right stripe */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-y-0 right-0 hidden w-[28px] xl:block"
+          style={{
+            background:
+              "repeating-linear-gradient(135deg, #FFEDE3 0 1px, transparent 1px 10px)",
+          }}
+        />
 
-      <main className="mx-auto max-w-[1200px] p-6 space-y-6">
-        {/* Title */}
-        <div className="rounded-xl bg-white border border-neutral-200 p-8">
-          <div className="flex items-start justify-between">
-            <div>
-              <div className="flex items-center gap-2 mb-3">
-                <span className="flex h-7 w-7 items-center justify-center">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                    <path d="M3 4L12 20L21 4H15.5L12 11L8.5 4H3Z" fill="#F97316" />
-                  </svg>
+        <div className="relative mx-auto max-w-[1120px] bg-[#FFFBF7] shadow-[0_0_0_1px_rgba(0,0,0,0.02)]">
+          {/* Header */}
+          <header className="flex h-[56px] items-center justify-between border-b border-[#F2E8E0] bg-white/90 px-6 backdrop-blur-sm md:px-8">
+            <div className="flex items-center gap-8">
+              <a href="#" className="flex items-center gap-2">
+                <Logo />
+              </a>
+              <nav className="hidden items-center gap-6 text-[14px] font-medium md:flex">
+                <a href="#" className="text-neutral-900">
+                  Courses
+                </a>
+                <a href="#" className="text-neutral-600 hover:text-neutral-900">
+                  My Learning
+                </a>
+              </nav>
+            </div>
+            <div className="flex items-center gap-3">
+              <button
+                aria-label="Notifications"
+                className="flex h-8 w-8 items-center justify-center rounded-full text-neutral-500 hover:bg-neutral-50"
+              >
+                <BellIcon />
+              </button>
+              <img
+                src="https://i.pravatar.cc/100?img=5"
+                alt=""
+                width={32}
+                height={32}
+                className="h-8 w-8 rounded-full object-cover ring-1 ring-black/5"
+              />
+            </div>
+          </header>
+
+          {/* Hero */}
+          <section className="bg-[#FFFBF7] px-6 pb-10 pt-10 md:px-8 md:pb-12 md:pt-14">
+            <div className="mx-auto max-w-[640px] text-center">
+              <div className="mb-6 flex justify-center">
+                <span className="rounded-md border border-[#FFE4D6] bg-[#FFF1E8] px-3.5 py-1.5 text-[11px] font-semibold tracking-[0.14em] text-[#E8682A]">
+                  INTELLIGENT LEARNING
                 </span>
-                <span className="text-sm font-bold">Vertex</span>
               </div>
-              <h1 className="text-display-1">Design System</h1>
-              <p className="mt-2 max-w-lg text-body text-neutral-500">
-                A unified design language for Vertex learning platform. Clean,
-                modern and focused on clarity, consistency and intuitive
-                learning experiences.
+              <h1
+                className="text-[36px] font-bold leading-[1.05] tracking-[-0.02em] text-neutral-900 md:text-[52px]"
+                style={{ fontFamily: "var(--font-playfair)" }}
+              >
+                Search your learning
+                <br />
+                in plain English.
+              </h1>
+              <p className="mx-auto mt-4 max-w-[520px] text-[15px] leading-6 text-[#64748B]">
+                Vertex understands what you want to learn and finds the exact
+                lessons across all your courses.
               </p>
-              <p className="mt-4 text-small font-semibold tracking-widest text-neutral-400 uppercase">
-                Version 1.0 · May 2025
+              <div className="mt-7 flex justify-center">
+                <Button className="h-11 rounded-lg bg-[#E86A2C] px-6 text-[14px] font-medium shadow-[0_1px_2px_rgba(0,0,0,0.08),0_4px_12px_rgba(232,106,44,0.2)] hover:bg-[#D65F24]">
+                  Explore Courses
+                  <span className="ml-1.5" aria-hidden>
+                    <ArrowRightIcon />
+                  </span>
+                </Button>
+              </div>
+            </div>
+
+            {/* Search bar */}
+            <div className="mx-auto mt-10 max-w-[640px]">
+              <div className="flex h-[56px] items-center gap-3 rounded-xl border border-[#F2E8E0] bg-white px-4 shadow-[0_2px_10px_rgba(15,23,42,0.04)]">
+                <span className="text-neutral-400">
+                  <SearchIcon />
+                </span>
+                <input
+                  placeholder="Ask anything about your learning..."
+                  className="h-full flex-1 bg-transparent text-[15px] placeholder:text-[#94A3B8] focus:outline-none"
+                />
+                <span className="hidden items-center gap-1 rounded-md border border-neutral-200 bg-white px-2 py-1 text-xs font-medium text-neutral-500 shadow-sm md:inline-flex">
+                  <span className="text-[11px]">⌘</span> K
+                </span>
+              </div>
+            </div>
+          </section>
+
+          {/* Courses section */}
+          <section className="border-t border-[#F2E8E0] bg-[#FFFBF7] px-6 pb-8 pt-8 md:px-8 md:pt-10">
+            <div className="mb-6 flex items-center justify-between">
+              <h2
+                className="text-[20px] font-bold tracking-tight text-neutral-900"
+                style={{ fontFamily: "var(--font-playfair)" }}
+              >
+                All Courses
+              </h2>
+              <a
+                href="#"
+                className="inline-flex items-center gap-1 text-[13px] font-medium text-[#E86A2C] hover:text-[#D65F24]"
+              >
+                View all courses
+                <span aria-hidden>
+                  <ArrowRightIcon small />
+                </span>
+              </a>
+            </div>
+
+            <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+              <CourseCardHome
+                icon={<NextIcon />}
+                title="Next.js for Production"
+                description="Build scalable, high-performance web applications with Next.js."
+                level="Intermediate"
+                duration="18h 24m"
+                modules="12 modules"
+              />
+              <CourseCardHome
+                icon={<DockerIcon />}
+                title="Docker Essentials"
+                description="Containerize applications and streamline your development workflow."
+                level="Beginner"
+                duration="10h 12m"
+                modules="8 modules"
+              />
+              <CourseCardHome
+                icon={<TSIcon />}
+                title="TypeScript Deep Dive"
+                description="Go beyond the basics and write safer, more expressive code."
+                level="Intermediate"
+                duration="14h 36m"
+                modules="10 modules"
+              />
+            </div>
+
+            {/* divider */}
+            <div className="mt-10 flex items-center gap-4">
+              <div className="h-px flex-1 bg-[#F2E8E0]" />
+              <span className="text-[#E86A2C]">
+                <StarIcon />
+              </span>
+              <p className="whitespace-nowrap text-[13px] text-[#64748B]">
+                New courses and lessons added every week.
               </p>
+              <div className="h-px flex-1 bg-[#F2E8E0]" />
             </div>
+          </section>
+
+          {/* Bottom blurred bars decor */}
+          <div className="relative h-[110px] overflow-hidden bg-[#FFFBF7]">
+            {/* left cluster */}
+            <div className="absolute bottom-0 left-0 flex items-end gap-[5px] px-6 opacity-90 md:px-8">
+              <div className="h-[54px] w-[44px] rounded-t-[6px] bg-gradient-to-t from-[#FFD8C2] to-[#FFB091]/0 blur-[0.5px]" />
+              <div className="h-[78px] w-[44px] rounded-t-[6px] bg-gradient-to-t from-[#FFC9B0] to-[#FFB091]/0 blur-[0.3px]" />
+              <div className="h-[96px] w-[44px] rounded-t-[6px] bg-gradient-to-t from-[#FFD8C2]/80 to-[#FFE9DC]/0" style={{ background: "linear-gradient(180deg, #FFE9DC 0%, #FFB08A 100%)", opacity: 0.85 }} />
+              <div className="h-[86px] w-[44px] rounded-t-[6px] bg-gradient-to-t from-[#FFB08A]/70 to-transparent" style={{ background: "linear-gradient(180deg, #FFC9B0 0%, #FFA07A 100%)", opacity: 0.7 }} />
+              <div className="hidden h-[66px] w-[44px] rounded-t-[6px] bg-gradient-to-t from-[#FFD1BA] to-transparent sm:block" />
+            </div>
+            {/* right cluster */}
+            <div className="absolute bottom-0 right-0 flex items-end gap-[5px] px-6 opacity-90 md:px-8">
+              <div className="h-[64px] w-[28px] rounded-t-[6px] bg-gradient-to-t from-[#FFD1BA] to-transparent sm:w-[36px]" />
+              <div className="h-[82px] w-[32px] rounded-t-[6px] sm:w-[44px]" style={{ background: "linear-gradient(180deg, #FFCDB3 0%, #FFA07A 60%, #FFD8C2 100%)", opacity: 0.8 }} />
+              <div className="h-[98px] w-[36px] rounded-t-[6px] sm:w-[44px]" style={{ background: "linear-gradient(180deg, #FFF0E6 0%, #FFB08A 100%)", opacity: 0.9 }} />
+              <div className="h-[84px] w-[32px] rounded-t-[6px] sm:w-[44px]" style={{ background: "linear-gradient(180deg, #FFC9B0 0%, #FF8A5A 100%)", opacity: 0.65 }} />
+              <div className="h-[52px] w-[28px] rounded-t-[6px] bg-gradient-to-t from-[#FFD8C2] to-[#FFB091]/0 sm:w-[36px]" />
+              <div className="hidden h-[70px] w-[36px] rounded-t-[6px] bg-gradient-to-t from-[#FFC9B0] to-transparent sm:block" />
+            </div>
+            {/* soft bottom overlay */}
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[50px] bg-gradient-to-t from-[#FFFBF7] to-transparent" />
           </div>
         </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* Colors */}
-          <div className="lg:col-span-2 rounded-xl bg-white border border-neutral-200 p-6">
-            <p className="text-small font-semibold tracking-widest uppercase text-neutral-400 mb-4">
-              <span className="text-primary-500 mr-2">01</span> Colors
-            </p>
-            <p className="text-xs font-semibold text-neutral-900 mb-2">Primary</p>
-            <div className="flex gap-3 mb-4">
-              {[
-                ["Primary 500", "#F97316", "bg-primary-500"],
-                ["Primary 400", "#FB923C", "bg-primary-400"],
-                ["Primary 300", "#FDBA74", "bg-primary-300"],
-                ["Primary 200", "#FED7AA", "bg-primary-200"],
-                ["Primary 100", "#FFEEE5", "bg-primary-100"],
-              ].map(([name, hex, cls]) => (
-                <div key={name} className="flex-1">
-                  <div className={`h-12 rounded-md ${cls} border border-black/5`} />
-                  <p className="mt-1 text-[11px] font-medium text-neutral-700">{name}</p>
-                  <p className="text-[11px] text-neutral-400">{hex}</p>
-                </div>
-              ))}
-            </div>
-            <p className="text-xs font-semibold text-neutral-900 mb-2">Neutral</p>
-            <div className="flex gap-2">
-              {[
-                ["Neutral 900", "#0F172A", "bg-neutral-900"],
-                ["Neutral 700", "#334155", "bg-neutral-700"],
-                ["Neutral 500", "#64748B", "bg-neutral-500"],
-                ["Neutral 300", "#CBD5E1", "bg-neutral-300"],
-                ["Neutral 200", "#E2E8F0", "bg-neutral-200"],
-                ["Neutral 100", "#F1F5F9", "bg-neutral-100"],
-                ["Neutral 50", "#FAFAFC", "bg-neutral-50 border border-neutral-200"],
-                ["White", "#FFFFFF", "bg-white border border-neutral-200"],
-              ].map(([name, hex, cls]) => (
-                <div key={name} className="flex-1 min-w-0">
-                  <div className={`h-10 rounded-md ${cls}`} />
-                  <p className="mt-1 text-[10px] font-medium text-neutral-700 truncate">{name}</p>
-                  <p className="text-[10px] text-neutral-400 truncate">{hex}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Principles quick */}
-          <div className="rounded-xl bg-white border border-neutral-200 p-6">
-            <p className="text-small font-semibold tracking-widest uppercase text-neutral-400 mb-4">
-              <span className="text-primary-500 mr-2">14</span> Principles
-            </p>
-            <ul className="space-y-3 text-xs text-neutral-600">
-              <li><span className="font-semibold text-neutral-900">Clarity First</span> — Every element should communicate clearly.</li>
-              <li><span className="font-semibold text-neutral-900">Consistency</span> — Use components and patterns consistently.</li>
-              <li><span className="font-semibold text-neutral-900">Focus & Calm</span> — Remove noise and help learners focus.</li>
-              <li><span className="font-semibold text-neutral-900">Accessible</span> — Design with accessibility in mind.</li>
-            </ul>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div className="rounded-xl bg-white border border-neutral-200 p-6">
-            <p className="text-small font-semibold tracking-widest uppercase text-neutral-400 mb-6">
-              <span className="text-primary-500 mr-2">02</span> Typography
-            </p>
-            <div className="space-y-6">
-              <div className="flex gap-6">
-                <span className="text-5xl font-bold" style={{ fontFamily: "var(--font-playfair)" }}>Ag</span>
-                <div>
-                  <p className="text-sm font-semibold">Playfair Display</p>
-                  <p className="text-xs text-neutral-400">Elegant · Readable · Timeless</p>
-                </div>
-              </div>
-              <div className="flex gap-6">
-                <span className="text-5xl font-bold" style={{ fontFamily: "var(--font-inter)" }}>Ag</span>
-                <div>
-                  <p className="text-sm font-semibold">Inter</p>
-                  <p className="text-xs text-neutral-400">Clean · Modern · Highly legible</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="lg:col-span-2 rounded-xl bg-white border border-neutral-200 p-6">
-            <p className="text-small font-semibold tracking-widest uppercase text-neutral-400 mb-4">
-              <span className="text-primary-500 mr-2">03</span> Type Scale
-            </p>
-            <div className="overflow-x-auto">
-              <table className="w-full text-xs">
-                <thead className="text-neutral-400 border-b border-neutral-100">
-                  <tr><th className="text-left py-2 font-medium">Style</th><th className="text-left font-medium">Font</th><th className="text-left font-medium">Size / Line Height</th><th className="text-left font-medium">Weight</th><th className="text-left font-medium">Use</th></tr>
-                </thead>
-                <tbody className="text-neutral-700">
-                  <tr className="border-b border-neutral-50"><td className="py-2 font-medium">Display 1</td><td>Playfair Display</td><td>48 / 56</td><td>Bold</td><td>Page titles</td></tr>
-                  <tr className="border-b border-neutral-50"><td className="py-2 font-medium">Display 2</td><td>Playfair Display</td><td>36 / 44</td><td>Bold</td><td>Section titles</td></tr>
-                  <tr className="border-b border-neutral-50"><td className="py-2 font-medium">Heading 1</td><td>Inter</td><td>28 / 36</td><td>Semi Bold</td><td>Card titles</td></tr>
-                  <tr className="border-b border-neutral-50"><td className="py-2 font-medium">Heading 2</td><td>Inter</td><td>22 / 30</td><td>Semi Bold</td><td>Sub section</td></tr>
-                  <tr className="border-b border-neutral-50"><td className="py-2 font-medium">Heading 3</td><td>Inter</td><td>18 / 26</td><td>Medium</td><td>Small titles</td></tr>
-                  <tr className="border-b border-neutral-50"><td className="py-2">Body Large</td><td>Inter</td><td>16 / 24</td><td>Regular</td><td>Body copy</td></tr>
-                  <tr className="border-b border-neutral-50"><td className="py-2">Body</td><td>Inter</td><td>14 / 20</td><td>Regular</td><td>Supporting text</td></tr>
-                  <tr><td className="py-2">Small</td><td>Inter</td><td>12 / 16</td><td>Regular</td><td>Captions, meta</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <div className="rounded-xl bg-white border border-neutral-200 p-6">
-            <p className="text-small font-semibold tracking-widest uppercase text-neutral-400 mb-4">
-              <span className="text-primary-500 mr-2">04</span> Spacing System
-            </p>
-            <p className="text-xs text-neutral-500 mb-4">Base unit: 4px</p>
-            <div className="flex items-end gap-3">
-              {[4, 8, 12, 16, 24, 32, 40, 48, 64].map((s) => (
-                <div key={s} className="flex flex-col items-center gap-1">
-                  <div className="bg-primary-100 rounded-sm" style={{ width: s, height: s }} />
-                  <span className="text-[10px] font-medium text-neutral-700">{s}</span>
-                  <span className="text-[10px] text-neutral-400">({s / 16}rem)</span>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="rounded-xl bg-white border border-neutral-200 p-6">
-            <p className="text-small font-semibold tracking-widest uppercase text-neutral-400 mb-4">
-              <span className="text-primary-500 mr-2">05</span> Radius & Shadows
-            </p>
-            <p className="text-xs font-semibold text-neutral-900 mb-2">Radius</p>
-            <div className="flex gap-3 mb-4">
-              {[
-                ["4px", "xs", "rounded-xs"],
-                ["8px", "sm", "rounded-sm"],
-                ["12px", "md", "rounded-md"],
-                ["16px", "lg", "rounded-lg"],
-                ["24px", "xl", "rounded-xl"],
-                ["Full", "circle", "rounded-full"],
-              ].map(([val, label, cls]) => (
-                <div key={label} className="flex flex-col items-center gap-1">
-                  <div className={`h-10 w-10 border border-neutral-200 bg-white ${cls}`} />
-                  <span className="text-[10px] text-neutral-600">{val}</span>
-                  <span className="text-[10px] text-neutral-400">({label})</span>
-                </div>
-              ))}
-            </div>
-            <p className="text-xs font-semibold text-neutral-900 mb-2">Shadows</p>
-            <div className="grid grid-cols-4 gap-3">
-              {[
-                ["Sm", "0 1px 2px 0", "rgba(15,23,42,0.05)", "shadow-sm"],
-                ["Md", "0 4px 12px -2px", "rgba(15,23,42,0.08)", "shadow-md"],
-                ["Lg", "0 12px 24px -4px", "rgba(15,23,42,0.10)", "shadow-lg"],
-                ["Xl", "0 20px 40px -8px", "rgba(15,23,42,0.12)", "shadow-xl"],
-              ].map(([label, a, b, cls]) => (
-                <div key={label} className={`rounded-md border border-neutral-100 bg-white p-3 ${cls}`}>
-                  <p className="text-xs font-semibold">{label}</p>
-                  <p className="text-[10px] text-neutral-400 leading-tight">{a} {b}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Buttons + Inputs */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-2 rounded-xl bg-white border border-neutral-200 p-6">
-            <p className="text-small font-semibold tracking-widest uppercase text-neutral-400 mb-4">
-              <span className="text-primary-500 mr-2">07</span> Buttons
-            </p>
-            <div className="overflow-x-auto">
-              <table className="w-full text-xs">
-                <thead className="text-neutral-400">
-                  <tr><th></th><th className="text-left font-medium">Primary</th><th className="text-left font-medium">Secondary</th><th className="text-left font-medium">Tertiary</th><th className="text-left font-medium">Text</th></tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td className="py-2 text-neutral-400">Default</td>
-                    <td className="py-2"><Button variant="primary" size="sm">Get Started</Button></td>
-                    <td className="py-2"><Button variant="secondary" size="sm">Explore Courses</Button></td>
-                    <td className="py-2"><Button variant="tertiary" size="sm">View Lesson <ExternalIcon /></Button></td>
-                    <td className="py-2"><Button variant="text" size="sm">Watch Video <PlayCircleIcon /></Button></td>
-                  </tr>
-                  <tr>
-                    <td className="py-2 text-neutral-400">Hover</td>
-                    <td className="py-2"><Button variant="primary" size="sm" className="bg-[#EA580C]">Get Started</Button></td>
-                    <td className="py-2"><Button variant="secondary" size="sm" className="bg-neutral-50">Explore Courses</Button></td>
-                    <td className="py-2"><Button variant="tertiary" size="sm">View Lesson <ExternalIcon /></Button></td>
-                    <td className="py-2"><Button variant="text" size="sm">Watch Video <PlayCircleIcon /></Button></td>
-                  </tr>
-                  <tr>
-                    <td className="py-2 text-neutral-400">Disabled</td>
-                    <td className="py-2"><Button variant="primary" size="sm" disabled>Get Started</Button></td>
-                    <td className="py-2"><Button variant="secondary" size="sm" disabled>Explore Courses</Button></td>
-                    <td className="py-2"><Button variant="tertiary" size="sm" disabled>View Lesson <ExternalIcon /></Button></td>
-                    <td className="py-2"><Button variant="text" size="sm" disabled>Watch Video <PlayCircleIcon /></Button></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <p className="mt-4 text-[11px] text-neutral-400">Height: 44px (default) · Padding: 16px (lg), 12px (md) · Radius: 12px · Font: Inter Medium (14–16px)</p>
-          </div>
-          <div className="rounded-xl bg-white border border-neutral-200 p-6 space-y-4">
-            <p className="text-small font-semibold tracking-widest uppercase text-neutral-400">
-              <span className="text-primary-500 mr-2">08</span> Inputs
-            </p>
-            <div>
-              <p className="text-xs font-semibold mb-2">Search / Text Input</p>
-              <SearchInput placeholder="Search anything..." />
-            </div>
-            <div>
-              <p className="text-xs font-semibold mb-2">Select</p>
-              <Select defaultValue="relevant">
-                <option value="relevant">Most Relevant</option>
-                <option value="newest">Newest</option>
-                <option value="popular">Most Popular</option>
-              </Select>
-            </div>
-            <p className="text-[11px] text-neutral-400">Height: 44px · Radius: 12px · Border: 1px solid #E2E8F0 · Focus: #FB923C</p>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div className="rounded-xl bg-white border border-neutral-200 p-6">
-            <p className="text-small font-semibold tracking-widest uppercase text-neutral-400 mb-3">
-              <span className="text-primary-500 mr-2">09</span> Badges / Tags
-            </p>
-            <div className="flex gap-6 text-xs">
-              <div><p className="text-neutral-400 mb-1">Video</p><Badge variant="video">VIDEO</Badge></div>
-              <div><p className="text-neutral-400 mb-1">Lesson</p><Badge variant="lesson">LESSON</Badge></div>
-              <div><p className="text-neutral-400 mb-1">Popular</p><Badge variant="popular">POPULAR</Badge></div>
-            </div>
-          </div>
-          <div className="rounded-xl bg-white border border-neutral-200 p-6">
-            <p className="text-small font-semibold tracking-widest uppercase text-neutral-400 mb-3">
-              <span className="text-primary-500 mr-2">10</span> Status / Indicators
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <Status variant="inProgress" />
-              <Status variant="completed" />
-              <Status variant="nowPlaying" />
-              <Status variant="locked" />
-            </div>
-          </div>
-          <div className="rounded-xl bg-white border border-neutral-200 p-6">
-            <p className="text-small font-semibold tracking-widest uppercase text-neutral-400 mb-3">
-              <span className="text-primary-500 mr-2">11</span> Progress Bar
-            </p>
-            <Progress value={35} />
-          </div>
-        </div>
-
-        <div className="rounded-xl bg-white border border-neutral-200 p-6">
-          <p className="text-small font-semibold tracking-widest uppercase text-neutral-400 mb-4">
-            <span className="text-primary-500 mr-2">12</span> Cards
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div><p className="text-xs text-neutral-400 mb-2">Course Card</p><CourseCard /></div>
-            <div><p className="text-xs text-neutral-400 mb-2">Lesson Card (Video)</p><LessonVideoCard /></div>
-            <div><p className="text-xs text-neutral-400 mb-2">Lesson Card (Lesson)</p><LessonCard /></div>
-            <div><p className="text-xs text-neutral-400 mb-2">Resource Card</p><ResourceCard /></div>
-          </div>
-        </div>
-
-        <div className="rounded-xl bg-white border border-neutral-200 p-6">
-          <p className="text-small font-semibold tracking-widest uppercase text-neutral-400 mb-4">
-            <span className="text-primary-500 mr-2">13</span> Navigation
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
-            <div className="flex items-center gap-6">
-              <Logo />
-              <span className="text-primary-500 font-medium">Courses</span>
-              <span className="text-neutral-500">My Learning</span>
-            </div>
-            <div>
-              <p className="text-xs text-neutral-400 mb-1">Breadcrumbs</p>
-              <Breadcrumbs />
-            </div>
-            <div>
-              <p className="text-xs text-neutral-400 mb-1">Pagination</p>
-              <Pagination />
-            </div>
-          </div>
-        </div>
-      </main>
+      </div>
     </div>
+  );
+}
+
+function CourseCardHome({
+  icon,
+  title,
+  description,
+  level,
+  duration,
+  modules,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+  level: string;
+  duration: string;
+  modules: string;
+}) {
+  return (
+    <div className="flex flex-col rounded-xl border border-[#F2E8E0] bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.04)]">
+      <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-lg">
+        {icon}
+      </div>
+      <h3
+        className="text-[16px] font-bold leading-5 text-neutral-900"
+        style={{ fontFamily: "var(--font-playfair)" }}
+      >
+        {title}
+      </h3>
+      <p className="mt-2 text-[13px] leading-5 text-[#64748B]">{description}</p>
+      <div className="mt-auto pt-6">
+        <div className="h-px bg-[#F8F2EE]" />
+        <div className="flex items-center gap-3 pt-3 text-[11px] text-[#64748B]">
+          <span className="inline-flex items-center gap-1">
+            <LevelIcon /> {level}
+          </span>
+          <span className="inline-flex items-center gap-1">
+            <ClockIcon /> {duration}
+          </span>
+          <span className="inline-flex items-center gap-1">
+            <DocIcon /> {modules}
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function BellIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden>
+      <path d="M10 3.2C10 3.2 6.2 3.2 6.2 8V11.2L4.2 13.2V14.2H15.8V13.2L13.8 11.2V8C13.8 3.2 10 3.2 10 3.2Z" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round" />
+      <path d="M8.2 16C8.7 16.9 9.3 17.3 10 17.3C10.7 17.3 11.3 16.9 11.8 16" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
+      <circle cx="15" cy="5" r="1.1" fill="#E86A2C" />
+    </svg>
+  );
+}
+function SearchIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden>
+      <circle cx="9" cy="9" r="6" stroke="currentColor" strokeWidth="1.5" />
+      <path d="M13.5 13.5L17 17" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  );
+}
+function ArrowRightIcon({ small }: { small?: boolean }) {
+  return (
+    <svg width={small ? 14 : 16} height={small ? 14 : 16} viewBox="0 0 16 16" fill="none" aria-hidden>
+      <path d="M6 3L11 8L6 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M11 8H3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  );
+}
+function NextIcon() {
+  return (
+    <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-[#111111] text-white">
+      <span className="text-[22px] font-bold tracking-tighter leading-none">N</span>
+    </div>
+  );
+}
+function DockerIcon() {
+  return (
+    <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-white">
+      {/* stylized whale/ship like in reference */}
+      <svg width="38" height="28" viewBox="0 0 40 26" fill="none" aria-hidden>
+        <path d="M5 14.5C5 14.5 8.5 21 18 21C27.5 21 32 14.5 32 14.5L30 10H7L5 14.5Z" fill="#1D63ED" />
+        <path d="M7 14.2C10 18.5 14.5 19.5 18 19.5C21.5 19.5 26 18.5 30 14.5" stroke="white" strokeWidth="0.7" opacity="0.4" />
+        <rect x="9" y="6" width="5" height="6" rx="0.6" fill="#3B82F6" stroke="white" strokeWidth="0.6" />
+        <rect x="15" y="7" width="5" height="5" rx="0.6" fill="#3B82F6" stroke="white" strokeWidth="0.6" />
+        <rect x="21" y="6.5" width="5" height="5.5" rx="0.6" fill="#3B82F6" stroke="white" strokeWidth="0.6" />
+        <rect x="15" y="2" width="4" height="4" rx="0.5" fill="#60A5FA" stroke="white" strokeWidth="0.6" />
+        <rect x="21" y="3" width="4" height="3" rx="0.5" fill="#60A5FA" stroke="white" strokeWidth="0.6" />
+        {/* whale tail */}
+        <path d="M32 12L37 9.5L35.5 12L37 14.5L32 12Z" fill="#1D63ED" />
+        <rect x="10" y="8" width="1.4" height="1.4" fill="white" />
+        <rect x="16" y="8.5" width="1.4" height="1.4" fill="white" />
+        <rect x="22" y="8" width="1.4" height="1.4" fill="white" />
+        <rect x="16" y="3" width="1" height="1" fill="white" />
+      </svg>
+    </div>
+  );
+}
+function TSIcon() {
+  return (
+    <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-[#3178C6] text-white">
+      <span className="text-[20px] font-bold tracking-tight">TS</span>
+    </div>
+  );
+}
+function StarIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
+      <path d="M8 1.3L9.4 5.1H13.5L10.1 7.5L11 11.4L8 9.1L5 11.4L5.9 7.5L2.5 5.1H6.6L8 1.3Z" stroke="currentColor" strokeWidth="1.2" strokeLinejoin="round" fill="none" />
+    </svg>
+  );
+}
+function LevelIcon() {
+  return (
+    <svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden>
+      <rect x="2" y="10" width="2.6" height="4" rx="0.4" fill="currentColor" />
+      <rect x="6.7" y="7" width="2.6" height="7" rx="0.4" fill="currentColor" />
+      <rect x="11.2" y="4" width="2.6" height="10" rx="0.4" fill="currentColor" />
+    </svg>
+  );
+}
+function ClockIcon() {
+  return (
+    <svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden>
+      <circle cx="8" cy="8" r="5.5" stroke="currentColor" strokeWidth="1.2" />
+      <path d="M8 5.5V8L10 9.2" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
+    </svg>
+  );
+}
+function DocIcon() {
+  return (
+    <svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden>
+      <path d="M5 2.5H10L12.5 5V13.5H5V2.5Z" stroke="currentColor" strokeWidth="1.2" strokeLinejoin="round" />
+      <path d="M10 2.5V5H12.5" stroke="currentColor" strokeWidth="1.2" />
+    </svg>
   );
 }

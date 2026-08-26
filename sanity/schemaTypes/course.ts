@@ -98,6 +98,7 @@ export const course = defineType({
           },
         },
       ],
+      validation: (r) => r.required().min(1),
     }),
   ],
   preview: {

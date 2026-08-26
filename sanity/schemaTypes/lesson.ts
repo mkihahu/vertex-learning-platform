@@ -23,7 +23,7 @@ export const lesson = defineType({
       title: 'Video URL',
       type: 'url',
       validation: (r) =>
-        r.required().uri({ scheme: ['http', 'https'] }),
+        r.required().uri({ scheme: ['https'] }),
     }),
     defineField({
       name: 'thumbnail',

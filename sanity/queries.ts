@@ -24,7 +24,7 @@ export const courseSlugsQuery = defineQuery(`*[_type == "course"]{ "slug": slug.
 export const lessonBySlugQuery = defineQuery(`*[_type == "lesson" && slug.current == $slug][0]{
   _id, title, slug, videoUrl, thumbnail, duration, freePreview, studentCount,
   notes, keyPoints, proTip, resources,
-  "parentCourse": *[_type == "course" && ^._id in modules[].lessons[]._ref][0]{
+  "parentCourses": *[_type == "course" && ^._id in modules[].lessons[]._ref]{
     _id, title, slug,
     category->{ title, slug },
     modules[]{ _key, title, lessons[]->{ _id } }

@@ -95,7 +95,7 @@ Scope is **content model + data layer only** — no catalog/course/lesson pages,
 ## Acceptance Criteria
 - `sanity/schemaTypes` exports 5 document types matching AGENTS.md §8 names/types exactly as seed expects; `npx sanity schema extract` succeeds without validation errors.
 - Studio at `/studio` shows groups: Courses, Lessons, Instructors, Categories, Videos; creating a course with modules→lessons refs validates; lesson notes renders Portable Text; image fields show hotspot.
-- `seed.ndjson` imports cleanly via `npx sanity dataset import seed.ndjson production --replace` (or `createOrReplace`) with no missing-field errors; count checks: categories 6, instructors 5, lessons ≥12, courses ≥1.
+- `seed.ndjson` imports cleanly via `npx sanity dataset import seed.ndjson production --replace` (or `createOrReplace`) with no missing-field errors; count checks: categories 5, instructors 5, lessons ≥12, courses ≥1.
 - Server client: importing `sanity/lib/fetch` or `sanity/lib/serverClient` from a client component throws at build/runtime due to `server-only`; importing from a server component succeeds and fetches published docs with token (or gracefully errors if token missing with clear message).
 - Queries: `courseBySlug`, `lessonBySlug` (with derived parent course), `courses` list, `instructorBySlug` return typed results via `defineQuery` + TypeGen (or at least raw GROQ works in Vision).
 - `npm run lint` passes; `npx tsc --noEmit` passes; `npm run build` passes (requires `SANITY_API_READ_TOKEN` dummy if not set — doc how to set).

@@ -19,5 +19,10 @@ function assertValue<T>(v: T | undefined, errorMessage: string): T {
     throw new Error(errorMessage)
   }
 
+  // Reject empty or whitespace-only strings
+  if (typeof v === 'string' && v.trim() === '') {
+    throw new Error(errorMessage)
+  }
+
   return v
 }
